@@ -23,8 +23,12 @@ func NewLogger() *Logger {
 	}
 }
 
-func (l *Logger) LogFatal(args interface{}) {
+func (l *Logger) LogFatal(key string, args interface{}) {
 	l.Logger.Error(args)
+	l.Logger.WithFields(logrus.Fields{
+		"key":  key,
+		"data": args,
+	}).Error()
 	log.Println(args)
 }
 

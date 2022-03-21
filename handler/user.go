@@ -26,15 +26,14 @@ func (h *userHandler) RegisterUser(c *gin.Context) {
 	var input users.RegisterInput
 	err := c.ShouldBindJSON(&input)
 	if err != nil {
-		h.logger.LogFatal(err)
-		// log.Println(err)
+		h.logger.LogFatal("RegisterUser bind request", err)
 		response := helper.ApiResponse(http.StatusBadRequest, nil, "Register Account Failed", err.Error())
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 	newUser, err := h.userService.Register(&input)
 	if err != nil {
-		// h.logger.LogFatal(err)
+		h.logger.LogFatal("RegisterUser Create", err)
 		response := helper.ApiResponse(http.StatusInternalServerError, nil, "Register Account Failed", "error")
 		c.JSON(http.StatusInternalServerError, response)
 		return
