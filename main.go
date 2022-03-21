@@ -24,12 +24,18 @@ func main() {
 	dsn := "root:@tcp(127.0.0.1:3306)/startup?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		logger.LogFatal(err.Error())
+		logger.LogFatal("error koneksi database", err.Error())
 	}
 	logger.LogInfo("success connect to database")
 	userRepository := users.NewRepository(db)
 	userService := users.NewService(userRepository)
 	userHandler := handler.NewUserHandler(userService)
+
+	userByEmail, err := userRepository.FindByEmail("dsadnajdad@gmail.com")
+	if err != nil {
+		log.Println(err)
+	}
+	log.Println(userByEmail)
 
 	router := gin.Default()
 	api := router.Group("/api/v1")
