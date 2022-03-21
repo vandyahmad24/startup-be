@@ -24,8 +24,8 @@ func NewLogger() *Logger {
 }
 
 func (l *Logger) LogFatal(args interface{}) {
-	l.Logger.Fatal(args)
-	log.Fatal(args)
+	l.Logger.Error(args)
+	log.Println(args)
 }
 
 func (l *Logger) LogDebug(args interface{}) {

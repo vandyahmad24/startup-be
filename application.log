@@ -1,1 +1,70 @@
 {"level":"info","msg":"success connect to database","time":"2022-03-20T11:26:02+07:00"}
+{"level":"info","msg":"aplikasi dijalankan","time":"2022-03-20T11:32:23+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T11:32:33+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T11:45:16+07:00"}
+{"level":"fatal","msg":"Error 1054: Unknown column 'occupations' in 'field list'","time":"2022-03-20T11:45:16+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T11:45:49+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T11:46:19+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T11:46:19+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T11:46:57+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T11:46:57+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T11:58:09+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T11:58:09+07:00"}
+{"level":"info","msg":"\u0026{6 vandy ahmad cah ganteng vandy@gmail.com $2a$04$SMQXNRFCMh0KU9DTO0UQy.eQ4rc19bhuYqX5Rt07TYcoT970gJbFC   2022-03-20 11:58:09.884 +0700 +07 2022-03-20 11:58:09.884 +0700 +07}","time":"2022-03-20T11:58:09+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T11:58:30+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T11:58:30+07:00"}
+{"level":"info","msg":"\u0026{7 vandy ahmad cah ganteng vandy@gmail.com $2a$04$1M4mm6/nTnacVaIJWq6uhu9gi/T7CS759ut/Oxfpr0AcJ6Eo2fKBm   2022-03-20 11:58:30.626 +0700 +07 2022-03-20 11:58:30.626 +0700 +07}","time":"2022-03-20T11:58:30+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T12:42:15+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T12:42:15+07:00"}
+{"level":"info","msg":"\u0026{8 vandy ahmad cah ganteng vandy@gmail.com $2a$04$h4hhYHW5AWcohamfzVZf2OFhWAHM1k56OqvZtyLt4A7wNmG8Rye42   2022-03-20 12:42:15.553 +0700 +07 2022-03-20 12:42:15.553 +0700 +07}","time":"2022-03-20T12:42:15+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T12:42:32+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T12:42:33+07:00"}
+{"level":"info","msg":"\u0026{9 vandy ahmad cah ganteng vandy@gmail.com $2a$04$Me1XYRCCtQSHZpJ24.lPYer0iZr.SnN2cUXSUzhuIv9JTwG4Fny2W   2022-03-20 12:42:32.961 +0700 +07 2022-03-20 12:42:32.961 +0700 +07}","time":"2022-03-20T12:42:33+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T12:43:18+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T12:43:42+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T12:46:18+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T13:32:26+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:32:39+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T13:39:05+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:39:09+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:39:32+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T13:40:11+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:40:29+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T13:41:38+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:41:45+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T13:42:43+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:42:52+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T13:47:52+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:48:04+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:48:07+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:48:08+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:48:10+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T13:48:24+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T14:01:34+07:00"}
+{"level":"info","msg":"success input user","time":"2022-03-20T14:02:24+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T14:02:48+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T14:09:48+07:00"}
+{"level":"fatal","msg":"unexpected EOF","time":"2022-03-20T14:09:57+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T14:10:11+07:00"}
+{"level":"fatal","msg":"unexpected EOF","time":"2022-03-20T14:10:17+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T14:11:26+07:00"}
+{"level":"fatal","msg":"unexpected EOF","time":"2022-03-20T14:11:36+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T14:15:43+07:00"}
+{"level":"fatal","msg":"unexpected EOF","time":"2022-03-20T14:15:52+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T14:16:19+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T14:16:56+07:00"}
+{"level":"fatal","msg":"unexpected EOF","time":"2022-03-20T14:17:05+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T14:20:08+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-20T14:20:45+07:00"}
+{"level":"fatal","msg":"dial tcp 127.0.0.1:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-03-21T21:16:14+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-21T21:16:40+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-21T21:17:04+07:00"}
+{"level":"fatal","msg":"unexpected EOF","time":"2022-03-21T21:17:29+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-21T21:21:55+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-21T21:22:26+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-21T21:23:24+07:00"}
+{"level":"error","msg":"unexpected EOF","time":"2022-03-21T21:23:37+07:00"}
+{"level":"error","msg":"unexpected EOF","time":"2022-03-21T21:23:39+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-21T21:24:08+07:00"}
+{"level":"error","msg":"unexpected EOF","time":"2022-03-21T21:24:43+07:00"}
+{"level":"error","msg":"unexpected EOF","time":"2022-03-21T21:24:45+07:00"}
