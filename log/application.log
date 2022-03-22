@@ -31,3 +31,5 @@
 {"level":"error","msg":"email has been registered","time":"2022-03-22T21:16:08+07:00"}
 {"data":"email has been registered","key":"RegisterUser Create","level":"error","msg":"","time":"2022-03-22T21:16:08+07:00"}
 {"level":"info","msg":"success connect to database","time":"2022-03-22T21:18:25+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-22T21:30:52+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-22T21:31:49+07:00"}
