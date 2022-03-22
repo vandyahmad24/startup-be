@@ -3,10 +3,12 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"os/signal"
 	cfg "startup/config"
 	"startup/handler"
+	"startup/helper"
 	"startup/logger"
 	"startup/users"
 	"syscall"
@@ -38,6 +40,10 @@ func main() {
 	log.Println(userByEmail)
 
 	router := gin.Default()
+	router.NoRoute(func(ctx *gin.Context) {
+		response := helper.ApiResponse(http.StatusNotFound, nil, "Route not found", "error route not found")
+		ctx.JSON(404, response)
+	})
 	api := router.Group("/api/v1")
 	api.POST("/register", userHandler.RegisterUser)
 	go func() {

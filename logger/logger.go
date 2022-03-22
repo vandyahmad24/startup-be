@@ -14,7 +14,7 @@ type Logger struct {
 func NewLogger() *Logger {
 	loggrus := logrus.New()
 	loggrus.SetFormatter(&logrus.JSONFormatter{})
-	file, _ := os.OpenFile("application.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	file, _ := os.OpenFile("log/application.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	loggrus.SetOutput(file)
 	loggrus.SetFormatter(&logrus.JSONFormatter{})
 
