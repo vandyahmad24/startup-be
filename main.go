@@ -33,12 +33,6 @@ func main() {
 	userService := users.NewService(userRepository)
 	userHandler := handler.NewUserHandler(userService)
 
-	userByEmail, err := userRepository.FindByEmail("dsadnajdad@gmail.com")
-	if err != nil {
-		log.Println(err)
-	}
-	log.Println(userByEmail)
-
 	router := gin.Default()
 	router.NoRoute(func(ctx *gin.Context) {
 		response := helper.ApiResponse(http.StatusNotFound, nil, "Route not found", "error route not found")
@@ -46,6 +40,7 @@ func main() {
 	})
 	api := router.Group("/api/v1")
 	api.POST("/register", userHandler.RegisterUser)
+	api.POST("/login", userHandler.LoginUser)
 	go func() {
 		router.Run(":8000")
 	}()

@@ -1,0 +1,33 @@
+{"level":"error","msg":"dial tcp 127.0.0.1:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-03-22T21:01:42+07:00"}
+{"data":"dial tcp 127.0.0.1:3306: connectex: No connection could be made because the target machine actively refused it.","key":"error koneksi database","level":"error","msg":"","time":"2022-03-22T21:01:42+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-22T21:01:42+07:00"}
+{"level":"error","msg":"Key: 'LoginInput.Email' Error:Field validation for 'Email' failed on the 'required' tag\nKey: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag","time":"2022-03-22T21:02:06+07:00"}
+{"data":"Key: 'LoginInput.Email' Error:Field validation for 'Email' failed on the 'required' tag\nKey: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag","key":"LoginUser bind request","level":"error","msg":"","time":"2022-03-22T21:02:06+07:00"}
+{"level":"error","msg":"Key: 'LoginInput.Email' Error:Field validation for 'Email' failed on the 'required' tag\nKey: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag","time":"2022-03-22T21:02:08+07:00"}
+{"data":"Key: 'LoginInput.Email' Error:Field validation for 'Email' failed on the 'required' tag\nKey: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag","key":"LoginUser bind request","level":"error","msg":"","time":"2022-03-22T21:02:08+07:00"}
+{"level":"error","msg":"Key: 'LoginInput.Email' Error:Field validation for 'Email' failed on the 'email' tag\nKey: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag","time":"2022-03-22T21:02:14+07:00"}
+{"data":"Key: 'LoginInput.Email' Error:Field validation for 'Email' failed on the 'email' tag\nKey: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag","key":"LoginUser bind request","level":"error","msg":"","time":"2022-03-22T21:02:14+07:00"}
+{"level":"error","msg":"Key: 'LoginInput.Email' Error:Field validation for 'Email' failed on the 'email' tag","time":"2022-03-22T21:02:25+07:00"}
+{"data":"Key: 'LoginInput.Email' Error:Field validation for 'Email' failed on the 'email' tag","key":"LoginUser bind request","level":"error","msg":"","time":"2022-03-22T21:02:25+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-22T21:04:13+07:00"}
+{"level":"error","msg":"User not found","time":"2022-03-22T21:04:23+07:00"}
+{"data":"User not found","key":"RegisterUser Create","level":"error","msg":"","time":"2022-03-22T21:04:23+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-22T21:05:00+07:00"}
+{"level":"error","msg":"record not found","time":"2022-03-22T21:05:07+07:00"}
+{"data":"record not found","key":"RegisterUser Create","level":"error","msg":"","time":"2022-03-22T21:05:07+07:00"}
+{"level":"error","msg":"record not found","time":"2022-03-22T21:05:08+07:00"}
+{"data":"record not found","key":"RegisterUser Create","level":"error","msg":"","time":"2022-03-22T21:05:08+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-22T21:06:15+07:00"}
+{"level":"error","msg":"record not found","time":"2022-03-22T21:06:22+07:00"}
+{"data":"record not found","key":"RegisterUser Create","level":"error","msg":"","time":"2022-03-22T21:06:22+07:00"}
+{"level":"error","msg":"record not found","time":"2022-03-22T21:06:24+07:00"}
+{"data":"record not found","key":"RegisterUser Create","level":"error","msg":"","time":"2022-03-22T21:06:24+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-22T21:08:50+07:00"}
+{"level":"error","msg":"user not found","time":"2022-03-22T21:09:18+07:00"}
+{"data":"user not found","key":"RegisterUser Create","level":"error","msg":"","time":"2022-03-22T21:09:18+07:00"}
+{"level":"error","msg":"user not found","time":"2022-03-22T21:12:49+07:00"}
+{"data":"user not found","key":"RegisterUser Create","level":"error","msg":"","time":"2022-03-22T21:12:49+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-22T21:15:17+07:00"}
+{"level":"error","msg":"email has been registered","time":"2022-03-22T21:16:08+07:00"}
+{"data":"email has been registered","key":"RegisterUser Create","level":"error","msg":"","time":"2022-03-22T21:16:08+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-03-22T21:18:25+07:00"}
