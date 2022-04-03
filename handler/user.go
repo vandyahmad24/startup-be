@@ -99,3 +99,38 @@ func (h *userHandler) CheckEmail(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 	return
 }
+
+func (h *userHandler) UploadAvatar(c *gin.Context) {
+	file, err := c.FormFile("avatar")
+	if err != nil {
+		h.logger.LogFatal("Upload avatar request", err)
+		errorMessage := gin.H{"is_uploaded": false}
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, err.Error(), "error")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	path := "images/" + file.Filename
+	err = c.SaveUploadedFile(file, path)
+	if err != nil {
+		h.logger.LogFatal("Upload avatar request", err)
+		errorMessage := gin.H{"is_uploaded": false}
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, err.Error(), "error")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+	//sementara
+	userId := 22
+	_, err = h.userService.SaveAvatar(userId, path)
+	if err != nil {
+		data := gin.H{"is_available": false}
+		response := helper.ApiResponse(http.StatusBadRequest, data, err.Error(), "error")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+	data := gin.H{"is_available": true}
+	response := helper.ApiResponse(http.StatusOK, data, "success upload avatar", "success")
+	c.JSON(http.StatusOK, response)
+
+	return
+}
