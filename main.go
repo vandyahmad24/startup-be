@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"startup/auth"
 	cfg "startup/config"
 	"startup/handler"
 	"startup/helper"
@@ -31,7 +32,8 @@ func main() {
 	logger.LogInfo("success connect to database")
 	userRepository := users.NewRepository(db)
 	userService := users.NewService(userRepository)
-	userHandler := handler.NewUserHandler(userService)
+	authService := auth.NewService()
+	userHandler := handler.NewUserHandler(userService, authService)
 
 	router := gin.Default()
 	router.NoRoute(func(ctx *gin.Context) {

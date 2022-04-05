@@ -1,7 +1,9 @@
 package handler
 
 import (
+	"fmt"
 	"net/http"
+	"startup/auth"
 	"startup/helper"
 	"startup/logger"
 	"startup/users"
@@ -12,13 +14,15 @@ import (
 type userHandler struct {
 	userService users.Service
 	logger      *logger.Logger
+	authService auth.Service
 }
 
-func NewUserHandler(userService users.Service) *userHandler {
+func NewUserHandler(userService users.Service, authService auth.Service) *userHandler {
 	logger := logger.NewLogger()
 	return &userHandler{
 		userService: userService,
 		logger:      logger,
+		authService: authService,
 	}
 }
 
@@ -42,7 +46,14 @@ func (h *userHandler) RegisterUser(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
-	formatter := users.FormatUser(newUser, "123")
+	token, err := h.authService.GenerateToken(newUser.ID)
+	if err != nil {
+		h.logger.LogFatal("RegisterUser Token", err)
+		response := helper.ApiResponse(http.StatusBadRequest, err.Error(), "Register Token Failed", "error register create")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+	formatter := users.FormatUser(newUser, token)
 
 	response := helper.ApiResponse(http.StatusOK, formatter, "Account has been created", "success")
 	c.JSON(http.StatusOK, response)
@@ -69,7 +80,14 @@ func (h *userHandler) LoginUser(c *gin.Context) {
 		return
 	}
 
-	formatter := users.FormatUser(user, "123")
+	token, err := h.authService.GenerateToken(user.ID)
+	if err != nil {
+		h.logger.LogFatal("LoginFailed Token", err)
+		response := helper.ApiResponse(http.StatusBadRequest, err.Error(), "Login Token Failed", "error login create")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+	formatter := users.FormatUser(user, token)
 
 	response := helper.ApiResponse(http.StatusOK, formatter, "Login Succesfully", "success")
 	c.JSON(http.StatusOK, response)
@@ -110,7 +128,10 @@ func (h *userHandler) UploadAvatar(c *gin.Context) {
 		return
 	}
 
-	path := "images/" + file.Filename
+	userId := 22
+	// path := "images/" + file.Filename
+	path := fmt.Sprintf("images/%d-%s", userId, file.Filename)
+	// fmt.Println(path)
 	err = c.SaveUploadedFile(file, path)
 	if err != nil {
 		h.logger.LogFatal("Upload avatar request", err)
@@ -120,7 +141,7 @@ func (h *userHandler) UploadAvatar(c *gin.Context) {
 		return
 	}
 	//sementara
-	userId := 22
+
 	_, err = h.userService.SaveAvatar(userId, path)
 	if err != nil {
 		data := gin.H{"is_available": false}
