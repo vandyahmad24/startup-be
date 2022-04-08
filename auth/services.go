@@ -32,7 +32,7 @@ func (s *jwtService) GenerateToken(id int) (string, error) {
 	claim["user_id"] = id
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claim)
 	secret := s.config.Token.Secret.Value
-	signedToken, err := token.SignedString(secret)
+	signedToken, err := token.SignedString([]byte(secret))
 	if err != nil {
 		return "", err
 	}

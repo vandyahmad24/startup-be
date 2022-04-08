@@ -30,6 +30,7 @@ func main() {
 	if err != nil {
 		logger.LogFatal("error koneksi database", err.Error())
 	}
+
 	// fmt.Println("ini secretkey=", config.Config.Jwt.Jwt.Secret)
 	logger.LogInfo("success connect to database")
 	userRepository := users.NewRepository(db)
