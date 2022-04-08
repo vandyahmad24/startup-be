@@ -127,8 +127,18 @@ func (h *userHandler) UploadAvatar(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
+	if file == nil {
+		h.logger.LogFatal("Upload avatar request", err)
+		errorMessage := gin.H{"is_uploaded": false}
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, "avatar is required", "error")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
 
-	userId := 22
+	current := c.MustGet("currentUser").(*users.User)
+	// fmt.Println(current)
+	userId := current.ID
+
 	// path := "images/" + file.Filename
 	path := fmt.Sprintf("images/%d-%s", userId, file.Filename)
 	// fmt.Println(path)

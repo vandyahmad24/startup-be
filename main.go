@@ -11,6 +11,7 @@ import (
 	"startup/handler"
 	"startup/helper"
 	"startup/logger"
+	"startup/middleware"
 	"startup/users"
 	"syscall"
 
@@ -30,12 +31,13 @@ func main() {
 	if err != nil {
 		logger.LogFatal("error koneksi database", err.Error())
 	}
-
-	// fmt.Println("ini secretkey=", config.Config.Jwt.Jwt.Secret)
 	logger.LogInfo("success connect to database")
+	// deklrasi middleware
+
 	userRepository := users.NewRepository(db)
 	userService := users.NewService(userRepository)
 	authService := auth.NewService()
+	authMiddleware := middleware.NewAuthMiddleware(userService, authService)
 	userHandler := handler.NewUserHandler(userService, authService)
 
 	router := gin.Default()
@@ -47,7 +49,7 @@ func main() {
 	api.POST("/register", userHandler.RegisterUser)
 	api.POST("/login", userHandler.LoginUser)
 	api.POST("/check-email", userHandler.CheckEmail)
-	api.POST("/upload-avatar", userHandler.UploadAvatar)
+	api.POST("/upload-avatar", authMiddleware.AuthMiddleware, userHandler.UploadAvatar)
 	go func() {
 		router.Run(":8000")
 	}()

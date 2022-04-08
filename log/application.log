@@ -95,3 +95,30 @@
 {"data":"key is of invalid type","key":"RegisterUser Token","level":"error","msg":"","time":"2022-04-08T21:41:02+07:00"}
 {"level":"info","msg":"success connect to database","time":"2022-04-08T21:41:51+07:00"}
 {"level":"info","msg":"success connect to database","time":"2022-04-08T21:43:09+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-08T22:15:04+07:00"}
+{"level":"error","msg":"request Content-Type isn't multipart/form-data","time":"2022-04-08T22:16:27+07:00"}
+{"data":"request Content-Type isn't multipart/form-data","key":"Upload avatar request","level":"error","msg":"","time":"2022-04-08T22:16:27+07:00"}
+{"level":"error","msg":"http: no such file","time":"2022-04-08T22:16:53+07:00"}
+{"data":"http: no such file","key":"Upload avatar request","level":"error","msg":"","time":"2022-04-08T22:16:53+07:00"}
+{"level":"error","msg":"http: no such file","time":"2022-04-08T22:17:32+07:00"}
+{"data":"http: no such file","key":"Upload avatar request","level":"error","msg":"","time":"2022-04-08T22:17:32+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-08T22:18:33+07:00"}
+{"level":"error","msg":"http: no such file","time":"2022-04-08T22:19:25+07:00"}
+{"data":"http: no such file","key":"Upload avatar request","level":"error","msg":"","time":"2022-04-08T22:19:25+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-08T22:19:40+07:00"}
+{"level":"error","msg":"http: no such file","time":"2022-04-08T22:19:55+07:00"}
+{"data":"http: no such file","key":"Upload avatar request","level":"error","msg":"","time":"2022-04-08T22:19:55+07:00"}
+{"level":"error","msg":"http: no such file","time":"2022-04-08T22:20:27+07:00"}
+{"data":"http: no such file","key":"Upload avatar request","level":"error","msg":"","time":"2022-04-08T22:20:27+07:00"}
+{"level":"error","msg":"http: no such file","time":"2022-04-08T22:20:30+07:00"}
+{"data":"http: no such file","key":"Upload avatar request","level":"error","msg":"","time":"2022-04-08T22:20:30+07:00"}
+{"level":"error","msg":"http: no such file","time":"2022-04-08T22:20:35+07:00"}
+{"data":"http: no such file","key":"Upload avatar request","level":"error","msg":"","time":"2022-04-08T22:20:35+07:00"}
+{"level":"error","msg":"http: no such file","time":"2022-04-08T22:20:38+07:00"}
+{"data":"http: no such file","key":"Upload avatar request","level":"error","msg":"","time":"2022-04-08T22:20:38+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-08T22:29:20+07:00"}
+{"level":"error","msg":"http: no such file","time":"2022-04-08T22:30:25+07:00"}
+{"data":"http: no such file","key":"Upload avatar request","level":"error","msg":"","time":"2022-04-08T22:30:25+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-08T22:41:46+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-08T22:42:49+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-08T22:43:16+07:00"}
