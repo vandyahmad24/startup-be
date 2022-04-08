@@ -42,3 +42,17 @@
 {"level":"info","msg":"success connect to database","time":"2022-04-04T06:24:20+07:00"}
 {"level":"error","msg":"email has been registered","time":"2022-04-04T06:24:28+07:00"}
 {"data":"email has been registered","key":"RegisterUser Create","level":"error","msg":"","time":"2022-04-04T06:24:28+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-06T06:30:28+07:00"}
+{"level":"error","msg":"Key: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag","time":"2022-04-06T06:31:34+07:00"}
+{"data":"Key: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag","key":"LoginUser bind request","level":"error","msg":"","time":"2022-04-06T06:31:34+07:00"}
+{"level":"error","msg":"Key: 'RegisterInput.Occupation' Error:Field validation for 'Occupation' failed on the 'required' tag\nKey: 'RegisterInput.Password' Error:Field validation for 'Password' failed on the 'required' tag","time":"2022-04-06T06:31:42+07:00"}
+{"data":"Key: 'RegisterInput.Occupation' Error:Field validation for 'Occupation' failed on the 'required' tag\nKey: 'RegisterInput.Password' Error:Field validation for 'Password' failed on the 'required' tag","key":"RegisterUser bind request","level":"error","msg":"","time":"2022-04-06T06:31:42+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-06T06:37:38+07:00"}
+{"level":"error","msg":"Error 1045: Access denied for user 'localhost'@'localhost' (using password: NO)","time":"2022-04-06T06:41:00+07:00"}
+{"data":"Error 1045: Access denied for user 'localhost'@'localhost' (using password: NO)","key":"error koneksi database","level":"error","msg":"","time":"2022-04-06T06:41:00+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-06T06:41:00+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-06T06:41:32+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-06T06:44:25+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-06T06:47:40+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-06T06:48:38+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-04-06T06:49:01+07:00"}

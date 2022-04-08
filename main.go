@@ -23,12 +23,14 @@ func main() {
 	fmt.Println("halo")
 	config := cfg.GetConfig()
 	logger := logger.NewLogger()
-	fmt.Println(config.Database.Startup.Mysql)
-	dsn := "root:@tcp(127.0.0.1:3306)/startup?charset=utf8mb4&parseTime=True&loc=Local"
+	// fmt.Println()
+	confDB := config.Database.Startup.Mysql
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", confDB.Username, confDB.Password, confDB.Host, confDB.Port, confDB.Dbname)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		logger.LogFatal("error koneksi database", err.Error())
 	}
+	// fmt.Println("ini secretkey=", config.Config.Jwt.Jwt.Secret)
 	logger.LogInfo("success connect to database")
 	userRepository := users.NewRepository(db)
 	userService := users.NewService(userRepository)

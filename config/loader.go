@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"os"
+	configApss "startup/config/config"
 	"startup/config/dbconfig"
 	"startup/util"
 
@@ -11,6 +12,7 @@ import (
 
 type config struct {
 	Database dbconfig.DatabaseList
+	Config   configApss.ConfigList
 }
 
 var cfg config
@@ -26,6 +28,15 @@ func init() {
 	err = viper.MergeInConfig()
 	if err != nil {
 		panic(fmt.Errorf("Cannot load database config: %v", err))
+	}
+	viper.Unmarshal(&cfg)
+
+	viper.AddConfigPath(dir + "/config/config")
+	viper.SetConfigType("yaml")
+	viper.SetConfigName("config.yml")
+	err = viper.MergeInConfig()
+	if err != nil {
+		panic(fmt.Errorf("Cannot load config: %v", err))
 	}
 	viper.Unmarshal(&cfg)
 
