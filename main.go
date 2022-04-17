@@ -43,13 +43,7 @@ func main() {
 
 	campaignRepository := campaign.NewRepository(db)
 	campaignService := campaign.NewService(campaignRepository)
-	campaigns, err := campaignService.FindCampaigns(22)
-	//campaigns, err := campaignRepository.FindByUserId(22)
-	for _, v := range campaigns {
-		fmt.Println(v.Name)
-		fmt.Println(v.CampaignImages[0].FileName)
-	}
-
+	campaignHandler := handler.NewCampaignHandler(campaignService)
 	router := gin.Default()
 	router.NoRoute(func(ctx *gin.Context) {
 		response := helper.ApiResponse(http.StatusNotFound, nil, "Route not found", "error route not found")
@@ -60,6 +54,8 @@ func main() {
 	api.POST("/login", userHandler.LoginUser)
 	api.POST("/check-email", userHandler.CheckEmail)
 	api.POST("/upload-avatar", authMiddleware.AuthMiddleware, userHandler.UploadAvatar)
+	//campaign
+	api.GET("/campaigns", campaignHandler.GetCampaigns)
 	go func() {
 		router.Run(":8000")
 	}()
