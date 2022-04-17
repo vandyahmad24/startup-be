@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/signal"
 	"startup/auth"
+	"startup/campaign"
 	cfg "startup/config"
 	"startup/handler"
 	"startup/helper"
@@ -40,12 +41,14 @@ func main() {
 	authMiddleware := middleware.NewAuthMiddleware(userService, authService)
 	userHandler := handler.NewUserHandler(userService, authService)
 
-	//campaignRepository := campaign.NewRepository(db)
+	campaignRepository := campaign.NewRepository(db)
+	campaignService := campaign.NewService(campaignRepository)
+	campaigns, err := campaignService.FindCampaigns(22)
 	//campaigns, err := campaignRepository.FindByUserId(22)
-	//for _, v := range campaigns {
-	//	fmt.Println(v.Name)
-	//	fmt.Println(v.CampaignImages[0].FileName)
-	//}
+	for _, v := range campaigns {
+		fmt.Println(v.Name)
+		fmt.Println(v.CampaignImages[0].FileName)
+	}
 
 	router := gin.Default()
 	router.NoRoute(func(ctx *gin.Context) {
