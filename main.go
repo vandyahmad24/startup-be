@@ -45,6 +45,7 @@ func main() {
 	campaignService := campaign.NewService(campaignRepository)
 	campaignHandler := handler.NewCampaignHandler(campaignService)
 	router := gin.Default()
+	router.Static("/images", "./images")
 	router.NoRoute(func(ctx *gin.Context) {
 		response := helper.ApiResponse(http.StatusNotFound, nil, "Route not found", "error route not found")
 		ctx.JSON(404, response)
