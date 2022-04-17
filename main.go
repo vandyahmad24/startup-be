@@ -40,6 +40,13 @@ func main() {
 	authMiddleware := middleware.NewAuthMiddleware(userService, authService)
 	userHandler := handler.NewUserHandler(userService, authService)
 
+	//campaignRepository := campaign.NewRepository(db)
+	//campaigns, err := campaignRepository.FindByUserId(22)
+	//for _, v := range campaigns {
+	//	fmt.Println(v.Name)
+	//	fmt.Println(v.CampaignImages[0].FileName)
+	//}
+
 	router := gin.Default()
 	router.NoRoute(func(ctx *gin.Context) {
 		response := helper.ApiResponse(http.StatusNotFound, nil, "Route not found", "error route not found")
