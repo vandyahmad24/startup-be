@@ -1,6 +1,9 @@
 package campaign
 
-import "time"
+import (
+	"startup/users"
+	"time"
+)
 
 type Campaign struct {
 	Id               int
@@ -16,6 +19,7 @@ type Campaign struct {
 	CreatedAt        time.Time
 	UpdatedAt        time.Time
 	CampaignImages   []CampaignImage
+	User             users.User
 }
 type Tabler interface {
 	TableName() string

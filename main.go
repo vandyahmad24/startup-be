@@ -30,6 +30,7 @@ func main() {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", confDB.Username, confDB.Password, confDB.Host, confDB.Port, confDB.Dbname)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
+		panic(err.Error())
 		logger.LogFatal("error koneksi database", err.Error())
 	}
 	logger.LogInfo("success connect to database")
@@ -57,6 +58,7 @@ func main() {
 	api.POST("/upload-avatar", authMiddleware.AuthMiddleware, userHandler.UploadAvatar)
 	//campaign
 	api.GET("/campaigns", campaignHandler.GetCampaigns)
+	api.GET("/campaigns/:id", campaignHandler.GetCampaign)
 	go func() {
 		router.Run(":8000")
 	}()

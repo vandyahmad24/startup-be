@@ -145,3 +145,30 @@
 {"level":"info","msg":"success connect to database","time":"2022-04-17T23:27:22+07:00"}
 {"level":"info","msg":"success connect to database","time":"2022-04-17T23:30:35+07:00"}
 {"level":"info","msg":"success connect to database","time":"2022-04-17T23:37:44+07:00"}
+{"level":"error","msg":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-05-02T22:06:41+07:00"}
+{"data":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","key":"error koneksi database","level":"error","msg":"","time":"2022-05-02T22:06:41+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-05-02T22:06:41+07:00"}
+{"level":"error","msg":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-05-02T22:06:56+07:00"}
+{"data":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","key":"Error to get campaign","level":"error","msg":"","time":"2022-05-02T22:06:56+07:00"}
+{"level":"error","msg":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-05-02T22:07:30+07:00"}
+{"data":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","key":"Error to get campaign","level":"error","msg":"","time":"2022-05-02T22:07:30+07:00"}
+{"level":"error","msg":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-05-02T22:07:58+07:00"}
+{"data":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","key":"Error to get campaign","level":"error","msg":"","time":"2022-05-02T22:07:58+07:00"}
+{"level":"error","msg":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-05-02T22:09:08+07:00"}
+{"data":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","key":"error koneksi database","level":"error","msg":"","time":"2022-05-02T22:09:08+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-05-02T22:09:08+07:00"}
+{"level":"error","msg":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-05-02T22:09:24+07:00"}
+{"data":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","key":"Error to get campaign","level":"error","msg":"","time":"2022-05-02T22:09:24+07:00"}
+{"level":"error","msg":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-05-02T22:09:36+07:00"}
+{"data":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","key":"Error to get campaign","level":"error","msg":"","time":"2022-05-02T22:09:36+07:00"}
+{"level":"error","msg":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-05-02T22:10:25+07:00"}
+{"data":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","key":"error koneksi database","level":"error","msg":"","time":"2022-05-02T22:10:25+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-05-02T22:10:25+07:00"}
+{"level":"error","msg":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","time":"2022-05-02T22:10:37+07:00"}
+{"data":"dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.","key":"Error to get campaign","level":"error","msg":"","time":"2022-05-02T22:10:37+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-05-02T22:11:33+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-05-02T22:14:55+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-05-02T22:31:02+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-05-02T22:44:23+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-05-02T22:49:31+07:00"}
+{"level":"info","msg":"success connect to database","time":"2022-05-02T22:55:50+07:00"}
