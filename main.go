@@ -13,6 +13,7 @@ import (
 	"startup/helper"
 	"startup/logger"
 	"startup/middleware"
+	"startup/transaction"
 	"startup/users"
 	"syscall"
 
@@ -43,8 +44,12 @@ func main() {
 
 	campaignRepository := campaign.NewRepository(db)
 	campaignService := campaign.NewService(campaignRepository)
-
 	campaignHandler := handler.NewCampaignHandler(campaignService)
+
+	transactionRepository := transaction.NewRepository(db)
+	transactionService := transaction.NewService(transactionRepository)
+	transactionHandler := handler.NewTransactionHandler(transactionService)
+
 	router := gin.Default()
 	router.Use(gin.Recovery())
 	router.Static("/images", "./images")
@@ -63,6 +68,8 @@ func main() {
 	api.POST("/campaigns", authMiddleware.AuthMiddleware, campaignHandler.CreateCampaign)
 	api.PUT("/campaigns/:id", authMiddleware.AuthMiddleware, campaignHandler.UpdateCampaign)
 	api.POST("/campaigns-image", authMiddleware.AuthMiddleware, campaignHandler.UploadCampaignImage)
+
+	api.GET("/campaigns/:id/transaction", transactionHandler.GetCampaginTransaction)
 	go func() {
 		router.Run(fmt.Sprintf(":%s", config.Config.Port))
 	}()

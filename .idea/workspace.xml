@@ -5,18 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="792c216e-c5e1-4a4d-acf8-61c3fbfc54b8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/transaction.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction/entity.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction/formatter.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction/input.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction/repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction/services.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/campaign/input.go" beforeDir="false" afterPath="$PROJECT_DIR$/campaign/input.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/campaign/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/campaign/repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/campaign/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/campaign/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/campaign.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/campaign.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" url="file://C:/Program Files/Go" />
   <component name="Git.Settings">
@@ -46,6 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
@@ -103,6 +112,11 @@
           <url>file://$PROJECT_DIR$/handler/campaign.go</url>
           <line>128</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/handler/transaction.go</url>
+          <line>20</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
