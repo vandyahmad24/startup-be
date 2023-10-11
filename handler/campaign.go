@@ -123,3 +123,64 @@ func (h *campaignHandler) UpdateCampaign(c *gin.Context) {
 	response := helper.ApiResponse(http.StatusOK, campaignResponse, "Campaign has been update", "success")
 	c.JSON(http.StatusOK, response)
 }
+
+func (h *campaignHandler) UploadCampaignImage(c *gin.Context) {
+	var input campaign.CreateCampaingImage
+	err := c.ShouldBind(&input)
+	if err != nil {
+		h.logger.LogFatal("UploadCampaignImage bind request", err)
+
+		errors := helper.FormatErrorValidation(err)
+		errorMessage := gin.H{"errors": errors}
+
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, "Campaign Create Error", "error input campaign")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	file, err := c.FormFile("file")
+	if err != nil {
+		h.logger.LogFatal("Upload avatar request", err)
+		errorMessage := gin.H{"is_uploaded": false}
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, err.Error(), "error")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+	if file == nil {
+		h.logger.LogFatal("Upload avatar request", err)
+		errorMessage := gin.H{"is_uploaded": false}
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, "avatar is required", "error")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	current := c.MustGet("currentUser").(*users.User)
+	// fmt.Println(current)
+	userId := current.ID
+
+	// path := "images/" + file.Filename
+	path := fmt.Sprintf("images/%d-%s", userId, file.Filename)
+	// fmt.Println(path)
+	err = c.SaveUploadedFile(file, path)
+	if err != nil {
+		h.logger.LogFatal("Upload avatar request", err)
+		errorMessage := gin.H{"is_uploaded": false}
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, err.Error(), "error")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+	//sementara
+
+	resp, err := h.service.CreateCampaingImage(input, path)
+	if err != nil {
+		data := gin.H{"is_available": false}
+		response := helper.ApiResponse(http.StatusBadRequest, data, err.Error(), "error")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	response := helper.ApiResponse(http.StatusOK, resp, "success upload avatar", "success")
+	c.JSON(http.StatusOK, response)
+
+	return
+}

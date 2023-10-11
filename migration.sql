@@ -36,6 +36,9 @@ create table if not EXISTS transactions(
     amount int,
     status varchar(255),
     code varchar(255),
+
+	created_at datetime,
+	updated_at datetime,
     primary key (id),
 	foreign key(user_id) references users(id) on update cascade on delete set null,
 	foreign key(campaign_id) references campaign(id) on update cascade on delete set null
@@ -46,6 +49,8 @@ id int NOT NULL AUTO_INCREMENT,
 campaign_id int,
 file_name varchar(255),
 is_primary boolean,
+	created_at datetime,
+	updated_at datetime,
 primary key (id),
 foreign key(campaign_id) references campaign(id) on update cascade on delete set null
 );
