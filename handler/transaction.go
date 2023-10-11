@@ -6,6 +6,7 @@ import (
 	"startup/helper"
 	"startup/logger"
 	"startup/transaction"
+	"startup/users"
 )
 
 type transactionHandler struct {
@@ -35,6 +36,23 @@ func (h *transactionHandler) GetCampaginTransaction(c *gin.Context) {
 	}
 
 	response := helper.ApiResponse(http.StatusOK, transaction.FormatCampaignTransactions(transactionRes), "List of transaction", "success")
+	c.JSON(http.StatusOK, response)
+	return
+
+}
+
+func (h *transactionHandler) GetCampaginTransactionByUserId(c *gin.Context) {
+	current := c.MustGet("currentUser").(*users.User)
+
+	transactionRes, err := h.service.GetTransactionByUserId(current.ID)
+	if err != nil {
+		h.logger.LogFatal("Error to get campaign", err)
+		response := helper.ApiResponse(http.StatusNotFound, nil, "Error to get campaign", "error")
+		c.JSON(http.StatusNotFound, response)
+		return
+	}
+
+	response := helper.ApiResponse(http.StatusOK, transaction.FormatUserTransactionFormatters(transactionRes), "List of transaction", "success")
 	c.JSON(http.StatusOK, response)
 	return
 

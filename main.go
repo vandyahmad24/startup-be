@@ -69,7 +69,8 @@ func main() {
 	api.PUT("/campaigns/:id", authMiddleware.AuthMiddleware, campaignHandler.UpdateCampaign)
 	api.POST("/campaigns-image", authMiddleware.AuthMiddleware, campaignHandler.UploadCampaignImage)
 
-	api.GET("/campaigns/:id/transaction", transactionHandler.GetCampaginTransaction)
+	api.GET("/campaigns/:id/transaction", authMiddleware.AuthMiddleware, transactionHandler.GetCampaginTransaction)
+	api.GET("/transactions", authMiddleware.AuthMiddleware, transactionHandler.GetCampaginTransactionByUserId)
 	go func() {
 		router.Run(fmt.Sprintf(":%s", config.Config.Port))
 	}()
