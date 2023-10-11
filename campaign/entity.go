@@ -6,20 +6,20 @@ import (
 )
 
 type Campaign struct {
-	Id               int
-	UserId           int
-	Name             string
-	ShortDescription string
-	Description      string
-	Perk             string
-	BackerCount      int
-	GoalAmount       int
-	CurrentAmount    int
-	Slug             string
-	CreatedAt        time.Time
-	UpdatedAt        time.Time
-	CampaignImages   []CampaignImage
-	User             users.User
+	Id               int             `json:"id"`
+	UserId           int             `json:"user_id"`
+	Name             string          `json:"name"`
+	ShortDescription string          `json:"short_description"`
+	Description      string          `json:"description"`
+	Perk             string          `json:"perk"`
+	BackerCount      int             `json:"backer_count"`
+	GoalAmount       int             `json:"goal_amount"`
+	CurrentAmount    int             `json:"current_amount"`
+	Slug             string          `json:"slug"`
+	CreatedAt        time.Time       `json:"created_at"`
+	UpdatedAt        time.Time       `json:"updated_at"`
+	CampaignImages   []CampaignImage `json:"campaign_images"`
+	User             users.User      `json:"user"`
 }
 
 // TableName overrides the table name used by User to `campaign`

@@ -78,11 +78,48 @@ func (h *campaignHandler) CreateCampaign(c *gin.Context) {
 	campaignResponse, err := h.service.CreateCampaign(input)
 	if err != nil {
 		h.logger.LogFatal("CreateCampaign Create", err)
-		response := helper.ApiResponse(http.StatusBadRequest, err.Error(), "Register Account Failed", "error register create")
+		response := helper.ApiResponse(http.StatusBadRequest, err.Error(), "Create campaign Failed", "error register create")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	response := helper.ApiResponse(http.StatusOK, campaignResponse, "Campaign has been created", "success")
+	c.JSON(http.StatusOK, response)
+}
+
+func (h *campaignHandler) UpdateCampaign(c *gin.Context) {
+	var inputId campaign.GetCampaignDetailInput
+	err := c.ShouldBindUri(&inputId)
+	if err != nil {
+		h.logger.LogFatal("Error to get campaign", err)
+		response := helper.ApiResponse(http.StatusBadRequest, nil, err.Error(), "error")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	var input campaign.CreateCampaignInput
+	err = c.ShouldBindJSON(&input)
+	if err != nil {
+		h.logger.LogFatal("CreateCampaignInput bind request", err)
+
+		errors := helper.FormatErrorValidation(err)
+		errorMessage := gin.H{"errors": errors}
+
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, "Campaign Create Error", "error input campaign")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+	current := c.MustGet("currentUser").(*users.User)
+	input.User = *current
+
+	campaignResponse, err := h.service.UpdateCampaign(inputId, input)
+	if err != nil {
+		h.logger.LogFatal("UpdateCampgin Create", err)
+		response := helper.ApiResponse(http.StatusBadRequest, err.Error(), "Update Campaign", "error update campaign")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	response := helper.ApiResponse(http.StatusOK, campaignResponse, "Campaign has been update", "success")
 	c.JSON(http.StatusOK, response)
 }
