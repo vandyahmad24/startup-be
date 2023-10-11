@@ -13,6 +13,7 @@ import (
 	"startup/helper"
 	"startup/logger"
 	"startup/middleware"
+	"startup/payment"
 	"startup/transaction"
 	"startup/users"
 	"syscall"
@@ -46,8 +47,10 @@ func main() {
 	campaignService := campaign.NewService(campaignRepository)
 	campaignHandler := handler.NewCampaignHandler(campaignService)
 
+	paymentService := payment.NewService()
+
 	transactionRepository := transaction.NewRepository(db)
-	transactionService := transaction.NewService(transactionRepository)
+	transactionService := transaction.NewService(transactionRepository, paymentService)
 	transactionHandler := handler.NewTransactionHandler(transactionService)
 
 	router := gin.Default()

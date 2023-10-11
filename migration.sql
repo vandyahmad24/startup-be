@@ -36,7 +36,7 @@ create table if not EXISTS transactions(
     amount int,
     status varchar(255),
     code varchar(255),
-
+	payment_url varchar(255),
 	created_at datetime,
 	updated_at datetime,
     primary key (id),

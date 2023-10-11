@@ -4,7 +4,6 @@ import (
 	"github.com/veritrans/go-midtrans"
 	"log"
 	"startup/config"
-	"startup/transaction"
 	"startup/users"
 )
 
@@ -12,13 +11,13 @@ type service struct {
 }
 
 type Service interface {
-	GetToken(transaction transaction.Transaction, user users.User) (string, error)
+	GetPaymentUrl(transaction Transaction, user users.User) (string, error)
 }
 
 func NewService() *service {
 	return &service{}
 }
-func (s *service) GetToken(transaction transaction.Transaction, user users.User) (string, error) {
+func (s *service) GetPaymentUrl(transaction Transaction, user users.User) (string, error) {
 	cfg := config.GetConfig()
 	midclient := midtrans.NewClient()
 	midclient.ServerKey = cfg.Config.MidtransServerKey
@@ -48,5 +47,5 @@ func (s *service) GetToken(transaction transaction.Transaction, user users.User)
 		log.Println("error midtrans ", err)
 		return "", err
 	}
-	return resp.Token, nil
+	return resp.RedirectURL, nil
 }
