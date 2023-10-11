@@ -1,3 +1,17 @@
+create table IF NOT EXISTS users(
+									id int NOT NULL AUTO_INCREMENT,
+									name varchar(255),
+	occupation varchar(255),
+	email varchar(255),
+	password varchar(255),
+	avatar varchar(255),
+	role varchar(255),
+	created_at datetime,
+	updated_at datetime,
+	primary key (id)
+	);
+
+
 create table IF NOT EXISTS campaign(
 	id int NOT NULL AUTO_INCREMENT,
 	user_id int,
@@ -9,20 +23,10 @@ create table IF NOT EXISTS campaign(
 	goal_amount int,
 	current_amount int,
 	slug varchar(255),
-	primary key (id),
-	foreign key(user_id) references users(id) on update cascade on delete set null
-);
-create table IF NOT EXISTS users(
-	id int NOT NULL AUTO_INCREMENT,
-	name varchar(255),
-	occupation varchar(255),
-	email varchar(255),
-	password varchar(255),
-	avatar varchar(255),
-	role varchar(255),
 	created_at datetime,
 	updated_at datetime,
-	primary key (id)
+	primary key (id),
+	foreign key(user_id) references users(id) on update cascade on delete set null
 );
 
 create table if not EXISTS transactions(

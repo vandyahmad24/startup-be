@@ -21,9 +21,6 @@ type Campaign struct {
 	CampaignImages   []CampaignImage
 	User             users.User
 }
-type Tabler interface {
-	TableName() string
-}
 
 // TableName overrides the table name used by User to `campaign`
 func (Campaign) TableName() string {

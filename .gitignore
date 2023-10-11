@@ -1,4 +1,4 @@
-/log
+/log/*
 /log/application.log
-/images
+/images/*
 .idea

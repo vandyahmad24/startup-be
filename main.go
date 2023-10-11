@@ -22,7 +22,6 @@ import (
 )
 
 func main() {
-	fmt.Println("halo")
 	config := cfg.GetConfig()
 	logger := logger.NewLogger()
 	// fmt.Println()
@@ -44,8 +43,10 @@ func main() {
 
 	campaignRepository := campaign.NewRepository(db)
 	campaignService := campaign.NewService(campaignRepository)
+
 	campaignHandler := handler.NewCampaignHandler(campaignService)
 	router := gin.Default()
+	router.Use(gin.Recovery())
 	router.Static("/images", "./images")
 	router.NoRoute(func(ctx *gin.Context) {
 		response := helper.ApiResponse(http.StatusNotFound, nil, "Route not found", "error route not found")
@@ -59,8 +60,9 @@ func main() {
 	//campaign
 	api.GET("/campaigns", campaignHandler.GetCampaigns)
 	api.GET("/campaigns/:id", campaignHandler.GetCampaign)
+	api.POST("/campaigns", authMiddleware.AuthMiddleware, campaignHandler.CreateCampaign)
 	go func() {
-		router.Run(":8000")
+		router.Run(fmt.Sprintf(":%s", config.Config.Port))
 	}()
 	c := make(chan os.Signal)
 	signal.Notify(c, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
