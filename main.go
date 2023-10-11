@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/gin-contrib/cors"
 	"log"
 	"net/http"
 	"os"
@@ -47,14 +48,16 @@ func main() {
 	campaignService := campaign.NewService(campaignRepository)
 	campaignHandler := handler.NewCampaignHandler(campaignService)
 
-	paymentService := payment.NewService()
-
 	transactionRepository := transaction.NewRepository(db)
-	transactionService := transaction.NewService(transactionRepository, paymentService)
-	transactionHandler := handler.NewTransactionHandler(transactionService)
+
+	paymentService := payment.NewService(campaignRepository)
+
+	transactionService := transaction.NewService(transactionRepository, paymentService, campaignRepository)
+	transactionHandler := handler.NewTransactionHandler(transactionService, paymentService)
 
 	router := gin.Default()
 	router.Use(gin.Recovery())
+	router.Use(cors.Default())
 	router.Static("/images", "./images")
 	router.NoRoute(func(ctx *gin.Context) {
 		response := helper.ApiResponse(http.StatusNotFound, nil, "Route not found", "error route not found")
@@ -65,6 +68,7 @@ func main() {
 	api.POST("/login", userHandler.LoginUser)
 	api.POST("/check-email", userHandler.CheckEmail)
 	api.POST("/upload-avatar", authMiddleware.AuthMiddleware, userHandler.UploadAvatar)
+	api.GET("/users/fetch", authMiddleware.AuthMiddleware, userHandler.FetchUser)
 	//campaign
 	api.GET("/campaigns", campaignHandler.GetCampaigns)
 	api.GET("/campaigns/:id", campaignHandler.GetCampaign)
@@ -75,6 +79,7 @@ func main() {
 	api.GET("/campaigns/:id/transaction", authMiddleware.AuthMiddleware, transactionHandler.GetCampaginTransaction)
 	api.GET("/transactions", authMiddleware.AuthMiddleware, transactionHandler.GetCampaginTransactionByUserId)
 	api.POST("/transactions", authMiddleware.AuthMiddleware, transactionHandler.CreateTransaction)
+	api.POST("/transactions/notification", authMiddleware.AuthMiddleware, transactionHandler.GetNotification)
 	go func() {
 		router.Run(fmt.Sprintf(":%s", config.Config.Port))
 	}()

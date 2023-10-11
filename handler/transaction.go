@@ -5,17 +5,19 @@ import (
 	"net/http"
 	"startup/helper"
 	"startup/logger"
+	"startup/payment"
 	"startup/transaction"
 	"startup/users"
 )
 
 type transactionHandler struct {
-	service transaction.Service
-	logger  *logger.Logger
+	service        transaction.Service
+	servicePayment payment.Service
+	logger         *logger.Logger
 }
 
-func NewTransactionHandler(service transaction.Service) *transactionHandler {
-	return &transactionHandler{service: service}
+func NewTransactionHandler(service transaction.Service, servicePayment payment.Service) *transactionHandler {
+	return &transactionHandler{service: service, servicePayment: servicePayment}
 }
 func (h *transactionHandler) GetCampaginTransaction(c *gin.Context) {
 	var input transaction.GetTransactionCampaignInput
@@ -77,13 +79,40 @@ func (h *transactionHandler) CreateTransaction(c *gin.Context) {
 
 	transactionRes, err := h.service.CreateTransaction(input)
 	if err != nil {
-		h.logger.LogFatal("Error to get CreateTransaction", err)
-		response := helper.ApiResponse(http.StatusNotFound, nil, "Error to get CreateTransaction", "error")
+
+		response := helper.ApiResponse(http.StatusNotFound, nil, err.Error(), "error")
 		c.JSON(http.StatusNotFound, response)
 		return
 	}
 
 	response := helper.ApiResponse(http.StatusOK, transaction.FormatTransactionFormatter(transactionRes), "Create Transaction", "success")
+	c.JSON(http.StatusOK, response)
+	return
+
+}
+
+func (h *transactionHandler) GetNotification(c *gin.Context) {
+	var input transaction.TransactionNotificationInput
+	err := c.ShouldBindJSON(&input)
+	if err != nil {
+		h.logger.LogFatal("GetNotification bind request", err)
+
+		errors := helper.FormatErrorValidation(err)
+		errorMessage := gin.H{"errors": errors}
+
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, "CreateTransaction Create Error", "error input CreateTransaction")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	err = h.service.ProcessPayment(input)
+	if err != nil {
+		response := helper.ApiResponse(http.StatusNotFound, nil, err.Error(), "error")
+		c.JSON(http.StatusNotFound, response)
+		return
+	}
+
+	response := helper.ApiResponse(http.StatusOK, nil, "Create Transaction", "success")
 	c.JSON(http.StatusOK, response)
 	return
 

@@ -11,3 +11,10 @@ type CreateTransactionInput struct {
 	CampaignId int `json:"campaign_id" binding:"required"`
 	User       users.User
 }
+
+type TransactionNotificationInput struct {
+	TransactionStatus string `json:"transaction_status"`
+	Code              string `json:"code"`
+	PaymentType       string `json:"payment_type"`
+	FraudStatus       string `json:"fraud_status"`
+}

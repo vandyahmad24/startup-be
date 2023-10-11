@@ -3,19 +3,21 @@ package payment
 import (
 	"github.com/veritrans/go-midtrans"
 	"log"
+	"startup/campaign"
 	"startup/config"
 	"startup/users"
 )
 
 type service struct {
+	campaignRepo campaign.Repository
 }
 
 type Service interface {
 	GetPaymentUrl(transaction Transaction, user users.User) (string, error)
 }
 
-func NewService() *service {
-	return &service{}
+func NewService(campaignRepo campaign.Repository) *service {
+	return &service{campaignRepo: campaignRepo}
 }
 func (s *service) GetPaymentUrl(transaction Transaction, user users.User) (string, error) {
 	cfg := config.GetConfig()
