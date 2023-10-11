@@ -71,6 +71,7 @@ func main() {
 
 	api.GET("/campaigns/:id/transaction", authMiddleware.AuthMiddleware, transactionHandler.GetCampaginTransaction)
 	api.GET("/transactions", authMiddleware.AuthMiddleware, transactionHandler.GetCampaginTransactionByUserId)
+	api.POST("/transactions", authMiddleware.AuthMiddleware, transactionHandler.CreateTransaction)
 	go func() {
 		router.Run(fmt.Sprintf(":%s", config.Config.Port))
 	}()

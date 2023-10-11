@@ -4,7 +4,9 @@ type ConfigList struct {
 	Token struct {
 		Secret Config
 	}
-	Port string
+	Port              string
+	MidtransServerKey string
+	MidtransClientKey string
 }
 
 type Config struct {

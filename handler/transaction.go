@@ -57,3 +57,34 @@ func (h *transactionHandler) GetCampaginTransactionByUserId(c *gin.Context) {
 	return
 
 }
+
+func (h *transactionHandler) CreateTransaction(c *gin.Context) {
+	var input transaction.CreateTransactionInput
+	err := c.ShouldBindJSON(&input)
+	if err != nil {
+		h.logger.LogFatal("CreateTransaction bind request", err)
+
+		errors := helper.FormatErrorValidation(err)
+		errorMessage := gin.H{"errors": errors}
+
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, "CreateTransaction Create Error", "error input CreateTransaction")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	current := c.MustGet("currentUser").(*users.User)
+	input.User = *current
+
+	transactionRes, err := h.service.CreateTransaction(input)
+	if err != nil {
+		h.logger.LogFatal("Error to get CreateTransaction", err)
+		response := helper.ApiResponse(http.StatusNotFound, nil, "Error to get CreateTransaction", "error")
+		c.JSON(http.StatusNotFound, response)
+		return
+	}
+
+	response := helper.ApiResponse(http.StatusOK, transactionRes, "Create Transaction", "success")
+	c.JSON(http.StatusOK, response)
+	return
+
+}
