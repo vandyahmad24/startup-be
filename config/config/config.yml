@@ -1,7 +1,0 @@
-config:
-  port: "8181"
-  midtransserverkey:
-  midtransclientkey:
-  token:
-    secret:
-      value: "vandyahmadmisry"
