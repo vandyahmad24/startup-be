@@ -18,12 +18,13 @@ jobs:
           chmod 600 ~/deploy_key
           ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "ls -la"
 
-      - name: Git Pull and Docker Build
+      - name: Git Pull, Docker Build, and Docker Run
         env:
           dest: "root@103.74.5.27"
         run: |
           echo "${{secrets.DEPLOY_KEY}}" > ~/deploy_key
           chmod 600 ~/deploy_key
-          ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "cd startup-be/ && eval \$(ssh-agent) && ssh-add ~/.ssh/vandyahmad24 && git pull origin master && docker build -t vandyahmad2404/startup-be:latest ."
+          ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "cd startup-be/ && eval \$(ssh-agent) && ssh-add ~/.ssh/vandyahmad24 && git pull origin master && docker build -t vandyahmad2404/startup-be:latest . && docker run --name startup-be -p 8181:8181 -d vandyahmad2404/startup-be:latest"
+      
       
       
