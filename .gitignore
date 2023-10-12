@@ -4,3 +4,4 @@
 .idea/*
 /config/config/*.yml
 /config/dbconfig/*.yml
+build
