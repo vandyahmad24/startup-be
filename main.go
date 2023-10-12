@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-contrib/cors"
 	"log"
 	"net/http"
 	"os"
@@ -18,6 +17,8 @@ import (
 	"startup/transaction"
 	"startup/users"
 	"syscall"
+
+	"github.com/gin-contrib/cors"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"

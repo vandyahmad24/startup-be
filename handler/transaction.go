@@ -1,13 +1,14 @@
 package handler
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"startup/helper"
 	"startup/logger"
 	"startup/payment"
 	"startup/transaction"
 	"startup/users"
+
+	"github.com/gin-gonic/gin"
 )
 
 type transactionHandler struct {

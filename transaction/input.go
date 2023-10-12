@@ -13,8 +13,8 @@ type CreateTransactionInput struct {
 }
 
 type TransactionNotificationInput struct {
-	TransactionStatus string `json:"transaction_status"`
-	Code              string `json:"code"`
-	PaymentType       string `json:"payment_type"`
-	FraudStatus       string `json:"fraud_status"`
+	TransactionStatus string `json:"transaction_status" binding:"required"`
+	Code              string `json:"order_id" binding:"required"`
+	PaymentType       string `json:"payment_type" binding:"required"`
+	FraudStatus       string `json:"fraud_status" binding:"required"`
 }
