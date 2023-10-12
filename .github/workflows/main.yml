@@ -22,4 +22,4 @@ jobs:
         DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
 
     - name: SSH into the server
-      run: ssh -o StrictHostKeyChecking=no root@${{secrets.HOST}} "ls -la"
+      run: ssh -o StrictHostKeyChecking=no root@103.74.5.27 "ls -la"
