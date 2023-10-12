@@ -24,7 +24,7 @@ jobs:
         run: |
           echo "${{secrets.DEPLOY_KEY}}" > ~/deploy_key
           chmod 600 ~/deploy_key
-          ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "cd /startup-be && git pull origin master"
+          ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "cd startup-be/ && git pull origin master"
 
       - name: Docker Build and Run
         run: |
