@@ -1,9 +1,0 @@
-database:
-  startup:
-    mysql:
-      host: 103.74.5.27
-      port: 3306
-      username: bootcamp
-      password: bootcamp
-      dbname: bootcamp
-      adapter: mysql
