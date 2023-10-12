@@ -28,7 +28,9 @@ jobs:
 
       - name: Docker Build
         run: |
+          cd startup-be 
           docker build -t vandyahmad2404/startup-be:latest .
+      
 
       - name: Docker Login
         run: |
