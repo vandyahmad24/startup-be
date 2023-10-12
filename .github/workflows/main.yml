@@ -31,25 +31,4 @@ jobs:
           echo "${{secrets.DEPLOY_KEY}}" > ~/deploy_key
           chmod 600 ~/deploy_key
           ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "cd startup-be/ && docker build -t vandyahmad2404/startup-be:latest ."
-          
-          
       
-
-      - name: Docker Login
-        run: |
-          echo "${{secrets.DEPLOY_KEY}}" > ~/deploy_key
-          chmod 600 ~/deploy_key
-          ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "cd startup-be/ && echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin"
-
-      - name: Docker Push
-        run: |
-          echo "${{secrets.DEPLOY_KEY}}" > ~/deploy_key
-          chmod 600 ~/deploy_key
-          ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "cd startup-be/ && docker push vandyahmad2404/startup-be:latest"
-
-      - name: Docker Run
-        run: |
-          
-          echo "${{secrets.DEPLOY_KEY}}" > ~/deploy_key
-          chmod 600 ~/deploy_key
-          ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "cd startup-be/ && docker run --name startup-be -p 8181:8181 -d vandyahmad2404/startup-be:latest"
