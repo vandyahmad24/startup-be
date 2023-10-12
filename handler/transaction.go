@@ -96,12 +96,11 @@ func (h *transactionHandler) GetNotification(c *gin.Context) {
 	var input transaction.TransactionData
 	err := c.ShouldBindJSON(&input)
 	if err != nil {
-		h.logger.LogFatal("GetNotification bind request", err)
 
 		errors := helper.FormatErrorValidation(err)
 		errorMessage := gin.H{"errors": errors}
 
-		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, "Register Account Failed", "error input register")
+		response := helper.ApiResponse(http.StatusBadRequest, errorMessage, "GetNotification Failed", "error input register")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
