@@ -1,6 +1,5 @@
 /log/*
 /log/application.log
-/images/*
 .idea/*
 /config/config/*.yml
 /config/dbconfig/*.yml
