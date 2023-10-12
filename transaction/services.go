@@ -17,7 +17,7 @@ type Service interface {
 	GetTransactionByCampaignId(input GetTransactionCampaignInput) ([]Transaction, error)
 	GetTransactionByUserId(userId int) ([]Transaction, error)
 	CreateTransaction(input CreateTransactionInput) (Transaction, error)
-	ProcessPayment(input TransactionNotificationInput) error
+	ProcessPayment(input TransactionData) error
 }
 
 func NewService(repository Repository, paymentService payment.Service, campaignRepo campaign.Repository) *service {
@@ -72,8 +72,8 @@ func (s *service) CreateTransaction(input CreateTransactionInput) (Transaction, 
 	return transaction, nil
 }
 
-func (s *service) ProcessPayment(input TransactionNotificationInput) error {
-	transaction, err := s.repository.GetByCode(input.Code)
+func (s *service) ProcessPayment(input TransactionData) error {
+	transaction, err := s.repository.GetByCode(input.OrderID)
 	if err != nil {
 		return err
 	}
@@ -85,11 +85,11 @@ func (s *service) ProcessPayment(input TransactionNotificationInput) error {
 		return errors.New("transaction already deny")
 	}
 
-	if input.PaymentType == "credit_card" && input.FraudStatus == "capture" && input.FraudStatus == "accept" {
+	if input.Body.PaymentType == "credit_card" && input.Body.FraudStatus == "capture" && input.Body.FraudStatus == "accept" {
 		transaction.Status = "paid"
-	} else if input.TransactionStatus == "settlement" {
+	} else if input.Body.TransactionStatus == "settlement" {
 		transaction.Status = "paid"
-	} else if input.TransactionStatus == "deny" || input.TransactionStatus == "expire" || input.TransactionStatus == "cancel" {
+	} else if input.Body.TransactionStatus == "deny" || input.Body.TransactionStatus == "expire" || input.Body.TransactionStatus == "cancel" {
 		transaction.Status = "deny"
 	}
 

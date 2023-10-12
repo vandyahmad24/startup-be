@@ -1,9 +1,9 @@
 database:
   startup:
     mysql:
-      host: localhost
+      host: 103.74.5.27
       port: 3306
-      username: root
-      password: 
-      dbname: startup
+      username: bootcamp
+      password: bootcamp
+      dbname: bootcamp
       adapter: mysql
