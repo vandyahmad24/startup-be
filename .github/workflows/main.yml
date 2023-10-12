@@ -1,4 +1,4 @@
-name : Golang
+name: Golang
 
 on:
   push:
@@ -17,3 +17,16 @@ jobs:
           echo "${{secrets.DEPLOY_KEY}}" > ~/deploy_key
           chmod 600 ~/deploy_key
           ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "ls -la"
+
+      - name: Git Pull
+        env:
+          dest: "root@103.74.5.27"
+        run: |
+          echo "${{secrets.DEPLOY_KEY}}" > ~/deploy_key
+          chmod 600 ~/deploy_key
+          ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "cd /path/to/your/repository && git pull origin master"
+
+      - name: Docker Build and Run
+        run: |
+          docker build -t vandyahmad2404/startup-be:latest .
+          docker run --name startup-be -p 8181:8181 -d vandyahmad2404/startup-be:latest

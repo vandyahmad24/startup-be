@@ -63,6 +63,9 @@ func main() {
 		response := helper.ApiResponse(http.StatusNotFound, nil, "Route not found", "error route not found")
 		ctx.JSON(404, response)
 	})
+	router.GET("/", func(context *gin.Context) {
+		context.JSON(200, "Welcome To Startup Server")
+	})
 	api := router.Group("/api/v1")
 	api.POST("/register", userHandler.RegisterUser)
 	api.POST("/login", userHandler.LoginUser)
