@@ -58,7 +58,7 @@ func main() {
 	router := gin.Default()
 	router.Use(gin.Recovery())
 	router.Use(cors.Default())
-	router.Static("/images", "./images")
+	router.Static("/upload", "./upload")
 	router.NoRoute(func(ctx *gin.Context) {
 		response := helper.ApiResponse(http.StatusNotFound, nil, "Route not found", "error route not found")
 		ctx.JSON(404, response)
