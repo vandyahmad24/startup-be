@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"log"
 	"net/http"
 	"startup/helper"
 	"startup/logger"
@@ -96,7 +97,7 @@ func (h *transactionHandler) GetNotification(c *gin.Context) {
 	var input transaction.TransactionData
 	err := c.ShouldBindJSON(&input)
 	if err != nil {
-
+		log.Println("error ", err)
 		errors := helper.FormatErrorValidation(err)
 		errorMessage := gin.H{"errors": errors}
 
