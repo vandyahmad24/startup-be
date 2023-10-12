@@ -18,7 +18,7 @@ jobs:
           chmod 600 ~/deploy_key
           ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "ls -la"
 
-      - name: Git Pull
+      - name: Git Pull and Docker Commands
         env:
           dest: "root@${{secrets.HOST}}"
         run: |
@@ -27,19 +27,8 @@ jobs:
           echo "${{secrets.DEPLOY_KEY}}" > ~/deploy_key
           chmod 600 ~/deploy_key
           ssh -o StrictHostKeyChecking=no -i ~/deploy_key $dest "cd startup-be/ && git pull origin master"
-
-      - name: Docker Build
-        run: |
+          cd /startup-be  # Ganti dengan path ke direktori proyek Anda di VPS
           docker build -t vandyahmad2404/startup-be:latest .
-
-      - name: Docker Login
-        run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-
-      - name: Docker Push
-        run: |
           docker push vandyahmad2404/startup-be:latest
-
-      - name: Docker Run
-        run: |
           docker run --name startup-be -p 8181:8181 -d vandyahmad2404/startup-be:latest
