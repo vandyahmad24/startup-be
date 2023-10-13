@@ -4,6 +4,7 @@ services:
     image: vandyahmad2404/startup-be
     restart: always
     container_name: startup-be
-    env_file: .env
     ports:
       - 8181:8181
+    volumes:
+      - ./.env:/app/.env

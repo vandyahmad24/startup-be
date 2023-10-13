@@ -16,7 +16,7 @@ COPY .env-example .env
 RUN go build -o main .
 
 # Mengungkapkan port 8080 yang akan digunakan oleh aplikasi
-EXPOSE 8080
+EXPOSE 8181
 
 # Perintah yang akan dijalankan ketika container dijalankan
 CMD ["./main"]
