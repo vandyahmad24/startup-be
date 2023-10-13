@@ -1,48 +1,17 @@
-##### Stage 1 #####
+# Menggunakan image golang:1.x sebagai base image
+FROM golang:1.21.1
 
-### Use golang:1.15 as base image for building the application
-FROM golang:1.17-alpine as builder
-
-### Create new directly and set it as working directory
-RUN mkdir -p /app
+# Menentukan direktori kerja di dalam container
 WORKDIR /app
 
-### Copy Go application dependency files
-COPY go.mod .
-COPY go.sum .
-
-### Setting a proxy for downloading modules
-ENV GOPROXY https://proxy.golang.org,direct
-
-### Download Go application module dependencies
-RUN go mod tidy
-
-### Copy actual source code for building the application
+# Menyalin seluruh file aplikasi Go ke dalam direktori kerja di dalam container
 COPY . .
 
-### CGO has to be disabled cross platform builds
-### Otherwise the application won't be able to start
-ENV CGO_ENABLED=0
+# Menjalankan perintah build aplikasi Go
+RUN go build -o main .
 
-### Build the Go app for a linux OS
-### 'scratch' and 'alpine' both are Linux distributions
-RUN GOOS=linux go build ./main.go
+# Mengungkapkan port 8080 yang akan digunakan oleh aplikasi
+EXPOSE 8080
 
-##### Stage 2 #####
-
-### Define the running image
-FROM scratch
-
-### Alternatively to 'FROM scratch', use 'alpine':
-# FROM alpine:3.13.1
-
-### Set working directory
-WORKDIR /app
-
-### Copy built binary application from 'builder' image
-COPY --from=builder /app/main .
-
-
-### Run the binary application
-EXPOSE 8181
+# Perintah yang akan dijalankan ketika container dijalankan
 CMD ["./main"]
