@@ -19,7 +19,7 @@ jobs:
       - name: Set up Docker
         run: |
           docker build -t vandyahmad2404/startup-be .
-          docker tag vandyahmad2404/startup-be:latest 
+          docker tag vandyahmad2404/startup-be:latest my-golang-app:$(date +\%Y\%m\%d\%H\%M\%S)
         
 
       - name: Push Docker Image
