@@ -83,7 +83,7 @@ func main() {
 	api.GET("/campaigns/:id/transaction", authMiddleware.AuthMiddleware, transactionHandler.GetCampaginTransaction)
 	api.GET("/transactions", authMiddleware.AuthMiddleware, transactionHandler.GetCampaginTransactionByUserId)
 	api.POST("/transactions", authMiddleware.AuthMiddleware, transactionHandler.CreateTransaction)
-	api.POST("/transactions/notification", transactionHandler.GetNotification)
+	api.POST("/transactions/notification", authMiddleware.LoggingMiddleware,transactionHandler.GetNotification)
 	go func() {
 		router.Run(fmt.Sprintf(":%s", config.Config.Port))
 	}()
