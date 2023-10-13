@@ -1,5 +1,5 @@
 package config
 
 var (
-	configPath = "./.env"
+	configPath = ".env"
 )
