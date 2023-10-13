@@ -85,11 +85,11 @@ func (s *service) ProcessPayment(input TransactionData) error {
 		return errors.New("transaction already deny")
 	}
 
-	if input.Body.PaymentType == "credit_card" && input.Body.FraudStatus == "capture" && input.Body.FraudStatus == "accept" {
+	if input.PaymentType == "credit_card" && input.FraudStatus == "capture" && input.FraudStatus == "accept" {
 		transaction.Status = "paid"
-	} else if input.Body.TransactionStatus == "settlement" {
+	} else if input.TransactionStatus == "settlement" {
 		transaction.Status = "paid"
-	} else if input.Body.TransactionStatus == "deny" || input.Body.TransactionStatus == "expire" || input.Body.TransactionStatus == "cancel" {
+	} else if input.TransactionStatus == "deny" || input.TransactionStatus == "expire" || input.TransactionStatus == "cancel" {
 		transaction.Status = "deny"
 	}
 

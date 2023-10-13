@@ -1,0 +1,30 @@
+version: "3"
+services:
+  talasi-api:
+    image: registry.gitlab.com/erloom.id/asaba/talasi/be/api
+    restart: always
+    container_name: talasi-api
+    env_file: .env
+    ports:
+      - 8080:8080
+  talasi-worker:
+    image: registry.gitlab.com/erloom.id/asaba/talasi/be/worker
+    restart: always
+    container_name: talasi-worker
+    env_file: .env
+    ports:
+      - 8081:8081
+  talasi-scheduler:
+    image: registry.gitlab.com/erloom.id/asaba/talasi/be/scheduler
+    restart: always
+    container_name: talasi-scheduler
+    env_file: .env
+    ports:
+      - 8082:8082
+  talasi-websocket:
+    image: registry.gitlab.com/erloom.id/asaba/talasi/be/websocket
+    restart: always
+    container_name: talasi-websocket
+    env_file: .env
+    ports:
+      - 8083:8083

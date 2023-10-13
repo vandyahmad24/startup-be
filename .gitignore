@@ -5,3 +5,4 @@
 /config/config/*.yml
 /config/dbconfig/*.yml
 build
+.env

@@ -26,11 +26,10 @@ import (
 )
 
 func main() {
-	config := cfg.GetConfig()
+	config := cfg.NewConfig()
 	logger := logger.NewLogger()
 	// fmt.Println()
-	confDB := config.Database.Startup.Mysql
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", confDB.Username, confDB.Password, confDB.Host, confDB.Port, confDB.Dbname)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", config.DB_USERNAME, config.DB_PASSWORD, config.DB_HOST, config.DB_PORT, config.DB_NAME)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err.Error())
@@ -86,7 +85,7 @@ func main() {
 	api.POST("/transactions", authMiddleware.AuthMiddleware, transactionHandler.CreateTransaction)
 	api.POST("/transactions/notification", transactionHandler.GetNotification)
 	go func() {
-		router.Run(fmt.Sprintf(":%s", config.Config.Port))
+		router.Run(fmt.Sprintf(":%s", config.PORT))
 	}()
 	c := make(chan os.Signal)
 	signal.Notify(c, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)

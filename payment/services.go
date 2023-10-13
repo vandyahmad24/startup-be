@@ -20,10 +20,10 @@ func NewService(campaignRepo campaign.Repository) *service {
 	return &service{campaignRepo: campaignRepo}
 }
 func (s *service) GetPaymentUrl(transaction Transaction, user users.User) (string, error) {
-	cfg := config.GetConfig()
+	cfg := config.NewConfig()
 	midclient := midtrans.NewClient()
-	midclient.ServerKey = cfg.Config.MidtransServerKey
-	midclient.ClientKey = cfg.Config.MidtransClientKey
+	midclient.ServerKey = cfg.MIDTRANS_SERVER_KEY
+	midclient.ClientKey = cfg.MIDTRANS_ACCESS_KEY
 	midclient.APIEnvType = midtrans.Sandbox
 
 	snapGateway := midtrans.SnapGateway{

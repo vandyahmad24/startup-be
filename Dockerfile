@@ -1,26 +1,48 @@
-FROM golang:alpine as builder
+##### Stage 1 #####
 
-ENV GO111MODULE=on
+### Use golang:1.15 as base image for building the application
+FROM golang:1.17-alpine as builder
 
-# define timezone
-ENV TZ Asia/Jakarta
-
-# Install git.
-RUN apk update && apk add --no-cache git  && apk add build-base
-
-# Set the current working directory inside the container 
+### Create new directly and set it as working directory
+RUN mkdir -p /app
 WORKDIR /app
 
-# Copy go mod and sum files 
-COPY go.mod go.sum ./
+### Copy Go application dependency files
+COPY go.mod .
+COPY go.sum .
 
-# Download all dependencies. Dependencies will be cached if the go.mod and the go.sum files are not changed 
-RUN go mod download
+### Setting a proxy for downloading modules
+ENV GOPROXY https://proxy.golang.org,direct
 
-# Copy the source from the current directory to the working Directory inside the container
+### Download Go application module dependencies
+RUN go mod tidy
+
+### Copy actual source code for building the application
 COPY . .
 
-EXPOSE 8181
+### CGO has to be disabled cross platform builds
+### Otherwise the application won't be able to start
+ENV CGO_ENABLED=0
 
-#Command to run the executable
-CMD ["make","run-rest"]
+### Build the Go app for a linux OS
+### 'scratch' and 'alpine' both are Linux distributions
+RUN GOOS=linux go build ./main.go
+
+##### Stage 2 #####
+
+### Define the running image
+FROM scratch
+
+### Alternatively to 'FROM scratch', use 'alpine':
+# FROM alpine:3.13.1
+
+### Set working directory
+WORKDIR /app
+
+### Copy built binary application from 'builder' image
+COPY --from=builder /app/main .
+
+
+### Run the binary application
+EXPOSE 8181
+CMD ["./main"]
