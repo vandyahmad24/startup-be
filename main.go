@@ -64,7 +64,7 @@ func main() {
 		ctx.JSON(404, response)
 	})
 	router.GET("/", func(context *gin.Context) {
-		context.JSON(200, "Welcome To Startup Server Running in Port 8181")
+		context.JSON(200, "Server Running in Port 8181")
 	})
 	api := router.Group("/api/v1")
 	api.Use(authMiddleware.LoggingMiddleware)
