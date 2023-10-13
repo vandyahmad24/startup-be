@@ -20,11 +20,11 @@ jobs:
         run: |
           docker build -t vandyahmad2404/startup-be .
           docker tag vandyahmad2404/startup-be:latest my-golang-app:$(date +\%Y\%m\%d\%H\%M\%S)
-        continue-on-error: true
+        
 
       - name: Push Docker Image
         run: |
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push vandyahmad2404/startup-be
-        continue-on-error: true
+        
 
