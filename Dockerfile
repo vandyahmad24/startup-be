@@ -7,6 +7,11 @@ WORKDIR /app
 # Menyalin seluruh file aplikasi Go ke dalam direktori kerja di dalam container
 COPY . .
 
+
+# Menyalin file .env-example ke dalam direktori kerja dan mengganti namanya menjadi .env
+COPY .env-example .env
+
+
 # Menjalankan perintah build aplikasi Go
 RUN go build -o main .
 
