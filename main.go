@@ -68,6 +68,7 @@ func main() {
 		context.JSON(200, "Welcome To Startup Server Running in Port 8181")
 	})
 	api := router.Group("/api/v1")
+	api.Use(authMiddleware.LoggingMiddleware)
 	api.POST("/register", userHandler.RegisterUser)
 	api.POST("/login", userHandler.LoginUser)
 	api.POST("/check-email", userHandler.CheckEmail)
@@ -83,7 +84,7 @@ func main() {
 	api.GET("/campaigns/:id/transaction", authMiddleware.AuthMiddleware, transactionHandler.GetCampaginTransaction)
 	api.GET("/transactions", authMiddleware.AuthMiddleware, transactionHandler.GetCampaginTransactionByUserId)
 	api.POST("/transactions", authMiddleware.AuthMiddleware, transactionHandler.CreateTransaction)
-	api.POST("/transactions/notification", authMiddleware.LoggingMiddleware,transactionHandler.GetNotification)
+	api.POST("/transactions/notification", transactionHandler.GetNotification)
 	go func() {
 		router.Run(fmt.Sprintf(":%s", config.Config.Port))
 	}()
